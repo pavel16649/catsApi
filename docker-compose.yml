@@ -1,0 +1,70 @@
+services:
+  cats-db:
+    image: postgres:latest
+    container_name: cats-db
+    restart: always
+    ports:
+      - 5434:5432
+    environment:
+      POSTGRES_USER: cats_user
+      POSTGRES_PASSWORD: cats_password
+      POSTGRES_DB: cats
+    volumes:
+      - cats_data:/var/lib/postgresql/data
+
+  friendships-db:
+    image: postgres:latest
+    container_name: friendships-db
+    restart: always
+    ports:
+      - 5431:5432
+    environment:
+      POSTGRES_USER: friendships_user
+      POSTGRES_PASSWORD: friendships_password
+      POSTGRES_DB: friendships
+    volumes:
+      - friendships_data:/var/lib/postgresql/data
+
+  owners-db:
+    image: postgres:latest
+    container_name: owners-db
+    restart: always
+    ports:
+      - 5433:5432
+    environment:
+      POSTGRES_USER: owners_user
+      POSTGRES_PASSWORD: owners_password
+      POSTGRES_DB: owners
+    volumes:
+      - owners_data:/var/lib/postgresql/data
+
+  security-db:
+    image: postgres:latest
+    container_name: security-db
+    restart: always
+    ports:
+      - 5435:5432
+    environment:
+      POSTGRES_USER: security_user
+      POSTGRES_PASSWORD: security_password
+      POSTGRES_DB: security
+    volumes:
+      - security_data:/var/lib/postgresql/data
+
+  rabbit:
+    image: rabbitmq:latest
+    hostname: rabbitmq
+    environment:
+      - TZ=Europe/Moscow
+      - RABBITMQ_DEFAULT_USER=rab
+      - RABBITMQ_DEFAULT_PASS=1234
+      - RABBITMQ_DEFAULT_VHOST=vhost
+    ports:
+      - "15672:15672"
+    restart: unless-stopped
+
+volumes:
+  cats_data:
+  owners_data:
+  security_data:
+  friendships_data:

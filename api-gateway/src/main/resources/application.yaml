@@ -1,0 +1,19 @@
+spring:
+  jpa:
+    properties:
+      hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+  liquibase:
+    enabled: false
+  application:
+    name: catsInfo
+  datasource:
+    url: jdbc:postgresql://localhost:5435/security
+    username: security_user
+    password: security_password
+    driverClassName: org.postgresql.Driver
+
+
+server:
+  port: 8080

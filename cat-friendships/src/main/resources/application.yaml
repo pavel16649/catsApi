@@ -1,0 +1,18 @@
+spring:
+  jpa:
+    properties:
+      hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+  liquibase:
+    enabled: false
+  application:
+    name: catsInfo
+  datasource:
+    url: jdbc:postgresql://localhost:5431/friendships
+    username: friendships_user
+    password: friendships_password
+    driverClassName: org.postgresql.Driver
+
+server:
+  port: 8081
